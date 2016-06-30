@@ -42,6 +42,21 @@
         <KEY NAME="foreign_libethemeid" TYPE="foreign" FIELDS="libethemeid" REFTABLE="pe_libe_themes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
+	<TABLE NAME="pe_ability_level_log" COMMENT="Default comment for the table, please edit me">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="libethemeid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
+        <FIELD NAME="quiz" TYPE="int" LENGTH="10" NOTNULL="false" DEFAULT="0" SEQUENCE="false"/>
+		<FIELD NAME="abilitylevel" TYPE="char" LENGTH="10" NOTNULL="false" DEFAULT="0" SEQUENCE="false"/>
+		<FIELD NAME="timelogged" TYPE="int" LENGTH="14" NOTNULL="false" SEQUENCE="false"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
+        <KEY NAME="foreign_libethemeid" TYPE="foreign" FIELDS="libethemeid" REFTABLE="pe_libe_themes" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
     <TABLE NAME="pe_libe_themes" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
@@ -283,7 +298,7 @@
         <KEY NAME="foreign_libequestionid" TYPE="foreign" FIELDS="libequestionid" REFTABLE="pe_libe_questions" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_provision_of_hint" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="pe_provided_hints_log" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="hintid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
