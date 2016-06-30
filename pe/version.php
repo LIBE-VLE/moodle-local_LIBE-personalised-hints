@@ -18,7 +18,7 @@
  * Version details
  *
  * @package    local_pe
- * @copyright  2015 London Knowledge Lab <kkarag01@mail.bbk.ac.uk>
+ * @copyright  2016 Knowledge Lab, Birkbeck, University of London
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  */

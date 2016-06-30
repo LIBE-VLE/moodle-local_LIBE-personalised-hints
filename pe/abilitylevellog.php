@@ -54,7 +54,6 @@ if ($USER->id != 0) {
     	// Insert rows in mdl_pe_ability_level_log table						// 12
 		$sql = "INSERT INTO mdl_pe_ability_level_log (learnerprofileid, libethemeid, quiz, abilitylevel, timelogged) VALUES ($learnerprofileid, 2, $quiz, '$abilitylevel', NULL)";
 		$conn->query($sql);
-		//echo "insert successful";
 	}
 }
 

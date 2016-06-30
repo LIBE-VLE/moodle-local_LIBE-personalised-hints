@@ -3,12 +3,12 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
 global $DB;
 global $USER;
+global $abilitylevel;
 
 // Require config.php file for database connection								// 1
-require_once('/home/libecour/public_html/moodle/config.php');
+require_once('/var/www/html/moodle/config.php');
 
 // Get quiz number																// 2
 $quiz = $_GET['quiz'];
@@ -28,7 +28,8 @@ mysqli_set_charset($conn,"utf8");
 if ($USER->id != 0) {
     
 	// Select Statement - MySQLi (object-oriented)								// 7
-    $sql = "SELECT grade FROM mdl_quiz_grades WHERE userid = $USER->id AND quiz = $quiz";
+    $sql = "SELECT grade FROM mdl_quiz_grades ".
+    	   "WHERE userid=$USER->id AND quiz=$quiz";
     $result = $conn->query($sql);
 	
 	// Check if any row is returned												// 8
@@ -38,20 +39,19 @@ if ($USER->id != 0) {
 		
 		// Map score to ability level											// 9
 		if ($grade <= 3.33330) {
-			$abilitylevel = "low";
+			$abilitylevel='low';
 		} elseif ($grade > 3.33330 && $grade <= 6.66660) {
-			$abilitylevel = "medium";
+			$abilitylevel='medium';
 		} else {
-			$abilitylevel = "high";
+			$abilitylevel='high';
 		}
 	}
 
 	// free result set															// 10
     $result->free();
 
-	
 	// Select Statement - MySQLi (object-oriented)								// 11
-    $sql = "SELECT id FROM mdl_pe_learner_profile WHERE userid = $USER->id" ;
+    $sql = "SELECT id FROM mdl_pe_learner_profile WHERE userid=$USER->id";
     $result = $conn->query($sql);
 	
 	// Get learner profile id													// 12
@@ -63,39 +63,37 @@ if ($USER->id != 0) {
 	// free result set															// 13
     $result->free();
 
-	
 	// Select Statement - MySQLi (object-oriented)								// 14
-    $sql = "SELECT abilitylevel FROM mdl_pe_user_ability_levels WHERE learnerprofileid = $learnerprofileid AND libethemeid = 2" ;
+    $sql = "SELECT abilitylevel FROM mdl_pe_user_ability_levels ".
+     	   "WHERE learnerprofileid=$learnerprofileid AND libethemeid=2";
     $result = $conn->query($sql);
     $rows = $result->num_rows;
-//    $row = $result->fetch_assoc();
 
 	// free result set															// 15
 	$result->free();
 		
     // Insert or update rows in mdl_pe_user_ability_levels table				// 16
     if ($rows > 0) {
+	    
 	    // update values of table mdl_pe_user_ability_levels
-	    $sql = "UPDATE mdl_pe_user_ability_levels SET abilitylevel = '$abilitylevel', lastupdated = NULL WHERE learnerprofileid = $learnerprofileid AND libethemeid = 2";
+	    $sql = "UPDATE mdl_pe_user_ability_levels ".
+	    	   "SET abilitylevel='$abilitylevel', lastupdated=CURRENT_TIMESTAMP ".
+	    	   "WHERE learnerprofileid=$learnerprofileid AND libethemeid=2";
 	    $conn->query($sql);
-	    //echo "update successful";
     } else {
 	    // insert values into table mdl_pe_user_ability_levels
-	    $sql = "INSERT INTO mdl_pe_user_ability_levels (learnerprofileid, libethemeid, abilitylevel, lastupdated) VALUES ($learnerprofileid, 2, '$abilitylevel', NULL)";
+	    $sql = "INSERT INTO mdl_pe_user_ability_levels ".
+	    	   "(learnerprofileid, libethemeid, abilitylevel, lastupdated) ".
+	    	   "VALUES ($learnerprofileid, 2, '$abilitylevel', NULL)";
 	    $conn->query($sql);
-	    //echo "insert successful";
     }
+    
+    // Insert row in mdl_pe_ability_level_log table						// 17
+	$sql = "INSERT INTO mdl_pe_ability_level_log ".
+		   "(learnerprofileid, libethemeid, quiz, abilitylevel, timelogged) ".
+		   "VALUES ($learnerprofileid, 2, $quiz, '$abilitylevel', NULL)";
+	$conn->query($sql);
 }
-
-
-// echo $abilitylevel;
-//echo "\n";
-//echo $grade;
-//echo "\n";
-//echo $learnerprofileid;
-//echo "\n";
-//printf("Column %d:\n", $result);
-// echo $row['abilitylevel'];
 
 // Close database connection													// 17
 $conn->close();
