@@ -18,36 +18,6 @@ function loadXMLDoc(url,cfunc) {
 
 
 
-function word_expansion(word, divid) {
-    
-    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/pe/wordexpansion.php?word=" + word,function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            document.getElementById(divid).innerHTML = myArr.wordexpansion;
-		}
-	});   
-}
-
-
-
-function word_popup(word, divid) {
-    
-    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/pe/wordexpansion.php?word=" + word,function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            var myArr = JSON.parse(xmlhttp.responseText);
-            document.getElementById(divid).title = myArr.wordexpansion;
-		}
-	});   
-}
-
-
-
-function word_restore(word, divid) {
-    document.getElementById(divid).innerHTML = word;
-}
-
-
-
 function create_profile(page, type) {
     
     if (type == 0) {
