@@ -196,35 +196,6 @@
         <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="pe_learning_outcomes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_cat_tests" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="libecourseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="title" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="language" TYPE="char" LENGTH="2" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="description" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="version" TYPE="int" LENGTH="8" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="duration" TYPE="int" LENGTH="3" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="difficultylevel" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="creationdate" TYPE="int" LENGTH="8" NOTNULL="false" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_libecourseid" TYPE="foreign" FIELDS="libecourseid" REFTABLE="pe_libe_courses" REFFIELDS="id"/>
-      </KEYS>
-    </TABLE>
-    <TABLE NAME="pe_cat_learning_outcomes" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="cattestid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="learningoutcomeid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_cattestid" TYPE="foreign" FIELDS="cattestid" REFTABLE="pe_cat_tests" REFFIELDS="id"/>
-        <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="pe_learning_outcomes" REFFIELDS="id"/>
-      </KEYS>
-    </TABLE>
     <TABLE NAME="pe_attempted_course" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
@@ -251,20 +222,6 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
         <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
         <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="pe_learning_objects" REFFIELDS="id"/>
-      </KEYS>
-    </TABLE>
-    <TABLE NAME="pe_attempted_cat" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="cattestid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="startdateandtime" TYPE="int" LENGTH="14" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="enddateandtime" TYPE="int" LENGTH="14" NOTNULL="false" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
-        <KEY NAME="foreign_cattestid" TYPE="foreign" FIELDS="cattestid" REFTABLE="pe_cat_tests" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
     <TABLE NAME="pe_libe_questions" COMMENT="Default comment for the table, please edit me">
@@ -309,54 +266,6 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
         <KEY NAME="foreign_hintid" TYPE="foreign" FIELDS="hintid" REFTABLE="pe_hints" REFFIELDS="id"/>
         <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
-      </KEYS>
-    </TABLE>
-    <TABLE NAME="pe_glossary" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="word" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="language" TYPE="char" LENGTH="2" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="description" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-        <FIELD NAME="expansionlevel" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-      </KEYS>
-    </TABLE>
-    <TABLE NAME="pe_word_occurences" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="wordid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="learningobjectid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="positionwithinlearningobject" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_wordid" TYPE="foreign" FIELDS="wordid" REFTABLE="pe_glossary" REFFIELDS="id"/>
-        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="pe_learning_objects" REFFIELDS="id"/>
-      </KEYS>
-    </TABLE>
-    <TABLE NAME="pe_word_expansion_provision" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="wordid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="provisiondateandtime" TYPE="int" LENGTH="14" NOTNULL="false" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_wordid" TYPE="foreign" FIELDS="wordid" REFTABLE="pe_glossary" REFFIELDS="id"/>
-        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
-      </KEYS>
-    </TABLE>
-    <TABLE NAME="pe_activity_sequence_info" COMMENT="Default comment for the table, please edit me">
-      <FIELDS>
-        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
-        <FIELD NAME="previousactivityid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-        <FIELD NAME="nextactivityid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
-      </FIELDS>
-      <KEYS>
-        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
   </TABLES>
