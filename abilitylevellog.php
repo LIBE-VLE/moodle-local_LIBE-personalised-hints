@@ -7,7 +7,7 @@ global $DB;
 global $USER;
 
 // Require config.php file for database connection								// 1
-require_once('/home/libecour/public_html/moodle/config.php');
+require_once('/var/www/html/moodle/config.php');
 
 // Get quiz number																// 2
 $quiz = $_GET['quiz'];
@@ -27,7 +27,7 @@ mysqli_set_charset($conn,"utf8");
 if ($USER->id != 0) {
 
 	// Select Statement - MySQLi (object-oriented)								// 7
-    $sql = "SELECT id FROM mdl_pe_learner_profile WHERE userid = $USER->id" ;
+    $sql = "SELECT id FROM mdl_LIBE-personalised-hints_learner_profile WHERE userid = $USER->id" ;
     $result = $conn->query($sql);
 	
 	// Get learner profile id													// 8
@@ -40,7 +40,7 @@ if ($USER->id != 0) {
     $result->free();
 
     // Select Statement - MySQLi (object-oriented)								// 10
-    $sql = "SELECT abilitylevel FROM mdl_pe_user_ability_levels WHERE learnerprofileid = $learnerprofileid AND libethemeid = 2" ;
+    $sql = "SELECT abilitylevel FROM mdl_LIBE-personalised-hints_user_ability_levels WHERE learnerprofileid = $learnerprofileid AND libethemeid = 2" ;
     $result = $conn->query($sql);
     
    	// Get ability level
@@ -52,7 +52,7 @@ if ($USER->id != 0) {
 		$result->free();
 		
     	// Insert rows in mdl_pe_ability_level_log table						// 12
-		$sql = "INSERT INTO mdl_pe_ability_level_log (learnerprofileid, libethemeid, quiz, abilitylevel, timelogged) VALUES ($learnerprofileid, 2, $quiz, '$abilitylevel', NULL)";
+		$sql = "INSERT INTO mdl_LIBE-personalised-hints_ability_level_log (learnerprofileid, libethemeid, quiz, abilitylevel, timelogged) VALUES ($learnerprofileid, 2, $quiz, '$abilitylevel', NULL)";
 		$conn->query($sql);
 	}
 }
