@@ -30,7 +30,7 @@ mysqli_set_charset($conn,"utf8");
 if ($USER->id != 0) {
 
 	// Select Statement - MySQLi (object-oriented)								// 8
-    $sql = "SELECT id FROM mdl_pe_learner_profile WHERE userid = $USER->id" ;
+    $sql = "SELECT id FROM mdl_LIBE-personalised-hints_learner_profile WHERE userid = $USER->id" ;
     $result = $conn->query($sql);
 	
 	// Get learner profile id													// 9
@@ -43,7 +43,7 @@ if ($USER->id != 0) {
     $result->free();
     
     // Select Statement - MySQLi (object-oriented)								// 11
-    $sql = "SELECT abilitylevel FROM mdl_pe_user_ability_levels ".
+    $sql = "SELECT abilitylevel FROM mdl_LIBE-personalised-hints_user_ability_levels ".
     	   "WHERE learnerprofileid = $learnerprofileid AND libethemeid = 2" ;
     $result = $conn->query($sql);
     
@@ -57,7 +57,7 @@ if ($USER->id != 0) {
 	$result->free();
 
     // Select Statement - MySQLi (object-oriented)								// 13
-    $sql = "SELECT * FROM mdl_pe_provided_hints_log ".
+    $sql = "SELECT * FROM mdl_LIBE-personalised-hints_provided_hints_log ".
     	   "WHERE learnerprofileid = $learnerprofileid ".
     	   "AND abilitylevel = '$abilitylevel' ".
     	   "AND libequestionid = $libequestionid" ;
@@ -73,7 +73,7 @@ if ($USER->id != 0) {
 	$result->free();
 	
 	// Select Statement - MySQLi (object-oriented)								// 15
-	$sql = "SELECT id, content FROM mdl_pe_hints ".
+	$sql = "SELECT id, content FROM mdl_LIBE-personalised-hints_hints ".
 		   "WHERE libequestionid = $libequestionid ".
 		   "AND attempt = $attempt ".
 		   "AND abilitylevel = '$abilitylevel'" ;
@@ -92,7 +92,7 @@ if ($USER->id != 0) {
         $outp .= '{"hint":"' . $hint . '"}';
 		
     	// Insert row in mdl_pe_provided_hints_log table						// 19
-		$sql = "INSERT INTO mdl_pe_provided_hints_log ".
+		$sql = "INSERT INTO mdl_LIBE-personalised-hints_provided_hints_log ".
 		"(learnerprofileid, abilitylevel, quiz, attempt, ".
 		"hintid, libequestionid, consumptiontime) ".
 		"VALUES ($learnerprofileid, '$abilitylevel', $quiz, $attempt, ".
@@ -107,7 +107,7 @@ if ($USER->id != 0) {
         $outp = '{"hint":"No hint available"}';
          
         // Insert empty hint in mdl_pe_provided_hints_log table					// 22
-		$sql = "INSERT INTO mdl_pe_provided_hints_log ".
+		$sql = "INSERT INTO mdl_LIBE-personalised-hints_provided_hints_log ".
 		"(learnerprofileid, abilitylevel, quiz, attempt, ".
 		"hintid, libequestionid, consumptiontime) ".
 		"VALUES ($learnerprofileid, '$abilitylevel', $quiz, $attempt, ".
