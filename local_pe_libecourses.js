@@ -26,7 +26,7 @@ function create_profile(page, type) {
 		var str = "quiz";
     }
     
-    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/pe/addlearnerprofile.php",function() {
+    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/LIBE-personalised-hints/addlearnerprofile.php",function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             window.location='http://cobi.dcs.bbk.ac.uk/moodle/mod/' + str + '/view.php?id=' + page;
 		}
@@ -43,7 +43,7 @@ function update_ability_level(quiz, page, type) {
 		var str = "quiz";
     }
     
-    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/pe/updateabilitylevel.php?quiz=" + quiz,function() {
+    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/LIBE-personalised-hints/updateabilitylevel.php?quiz=" + quiz,function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             window.location='http://cobi.dcs.bbk.ac.uk/moodle/mod/' + str + '/view.php?id=' + page;
 		}
@@ -54,7 +54,7 @@ function update_ability_level(quiz, page, type) {
 
 function log_ability_level(quiz) {
     
-    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/pe/abilitylevellog.php?quiz=" + quiz,function() {
+    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/LIBE-personalised-hints/abilitylevellog.php?quiz=" + quiz,function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             update_ability_level(quiz, page);
 		}
@@ -65,7 +65,7 @@ function log_ability_level(quiz) {
 
 function provide_hint(quiz, question, divid) {
     
-    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/pe/providehint.php?quiz=" + quiz + "&question=" + question,function() {
+    loadXMLDoc("http://cobi.dcs.bbk.ac.uk/moodle/local/LIBE-personalised-hints/providehint.php?quiz=" + quiz + "&question=" + question,function() {
         if (xmlhttp.readyState==4 && xmlhttp.status==200) {
             var myArr = JSON.parse(xmlhttp.responseText);
             document.getElementById(divid).innerHTML = myArr.hint;
