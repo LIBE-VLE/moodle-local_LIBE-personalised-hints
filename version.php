@@ -17,7 +17,7 @@
 /**
  * Version details
  *
- * @package    local_pe
+ * @package    local_LIBE-personalised-hints
  * @copyright  2016 Knowledge Lab, Birkbeck, University of London
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -28,6 +28,6 @@ defined('MOODLE_INTERNAL') || die;
 $plugin->version   = 2015110200;
 $plugin->requires  = 2014051200;
 $plugin->cron      = 0;
-$plugin->component = 'local_pe';
+$plugin->component = 'local_LIBE-personalised-hints';
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = '1.0';
