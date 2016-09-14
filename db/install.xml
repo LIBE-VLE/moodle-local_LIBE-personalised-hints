@@ -264,7 +264,7 @@
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_hintid" TYPE="foreign" FIELDS="hintid" REFTABLE="pe_hints" REFFIELDS="id"/>
+        <KEY NAME="foreign_hintid" TYPE="foreign" FIELDS="hintid" REFTABLE="LIBE-personalised-hints_hints" REFFIELDS="id"/>
         <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="LIBE-personalised-hints_learner_profile" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
