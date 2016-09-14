@@ -24,14 +24,14 @@ mysqli_set_charset($conn,"utf8");
 if ($USER->id != 0) {
     
     // Select Statement - MySQLi (object-oriented)								// 5
-    $sql = "SELECT * FROM mdl_pe_learner_profile WHERE userid = $USER->id";
+    $sql = "SELECT * FROM mdl_LIBE-personalised-hints_learner_profile WHERE userid = $USER->id";
     $result = $conn->query($sql);
     $row = $result->num_rows;
 
     // Insert rows in learner profile table										// 6
     if ($row == 0) {
 	    // insert values into table mdl_pe_learner_profile
-	    $sql = "INSERT INTO mdl_pe_learner_profile (userid, cognitivestyleid, completedinductiontest, lastupdatedbylibe) VALUES ($USER->id, 1, DEFAULT, NULL)";
+	    $sql = "INSERT INTO mdl_LIBE-personalised-hints_learner_profile (userid, cognitivestyleid, completedinductiontest, lastupdatedbylibe) VALUES ($USER->id, 1, DEFAULT, NULL)";
 	    $conn->query($sql);
     }
     
