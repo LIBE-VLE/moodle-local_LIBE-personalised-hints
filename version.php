@@ -26,7 +26,7 @@
 defined('MOODLE_INTERNAL') || die;
 
 $plugin->version   = 2015110200;
-$plugin->requires  = 2014051200;
+$plugin->requires  = 2014101000;
 $plugin->cron      = 0;
 $plugin->component = 'local_LIBE-personalised-hints';
 $plugin->maturity = MATURITY_STABLE;
