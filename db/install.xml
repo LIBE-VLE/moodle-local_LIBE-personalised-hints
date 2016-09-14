@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<XMLDB PATH="local/pe/db" VERSION="2015110200" COMMENT="XMLDB file for Moodle local/pe"
+<XMLDB PATH="local/LIBE-personalised-hints/db" VERSION="2015110200" COMMENT="XMLDB file for Moodle local/pe"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
 >
   <TABLES>
-    <TABLE NAME="pe_learner_profile" COMMENT="Default comment for local_pe, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_learner_profile" COMMENT="Default comment for local_pe, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -19,7 +19,7 @@
         <KEY NAME="foreign_cognitivestyleid" TYPE="foreign" FIELDS="cognitivestyleid" REFTABLE="pe_cognitive_styles" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_cognitive_styles" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_cognitive_styles" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="cognitivestyle" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
@@ -28,7 +28,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_user_ability_levels" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_user_ability_levels" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -42,7 +42,7 @@
         <KEY NAME="foreign_libethemeid" TYPE="foreign" FIELDS="libethemeid" REFTABLE="pe_libe_themes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-	<TABLE NAME="pe_ability_level_log" COMMENT="Default comment for the table, please edit me">
+	<TABLE NAME="LIBE-personalised-hints_ability_level_log" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -57,7 +57,7 @@
         <KEY NAME="foreign_libethemeid" TYPE="foreign" FIELDS="libethemeid" REFTABLE="pe_libe_themes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_libe_themes" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_libe_themes" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="libetheme" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
@@ -66,7 +66,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_user_achievement_levels" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_user_achievement_levels" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -80,7 +80,7 @@
         <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="pe_learning_outcomes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_learning_outcomes" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_learning_outcomes" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learningoutcome" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
@@ -89,7 +89,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_user_preferences" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_user_preferences" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -103,7 +103,7 @@
         <KEY NAME="foreign_preferenceid" TYPE="foreign" FIELDS="preferenceid" REFTABLE="pe_preferences" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_preferences" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_preferences" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="preference" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
@@ -112,7 +112,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_libe_courses" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_libe_courses" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="courseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -126,7 +126,7 @@
         <KEY NAME="foreign_courseid" TYPE="foreign" FIELDS="courseid" REFTABLE="course" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_libe_course_themes" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_libe_course_themes" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="libecourseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -138,7 +138,7 @@
         <KEY NAME="foreign_libethemeid" TYPE="foreign" FIELDS="libethemeid" REFTABLE="pe_libe_themes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_libe_course_lessons" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_libe_course_lessons" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="libecourseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -150,7 +150,7 @@
         <KEY NAME="foreign_libelessonid" TYPE="foreign" FIELDS="libelessonid" REFTABLE="pe_libe_lessons" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_libe_lessons" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_libe_lessons" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="lesson" TYPE="text" NOTNULL="false" SEQUENCE="false"/>
@@ -159,7 +159,7 @@
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_learning_objects" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_learning_objects" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="libecourseid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -180,11 +180,11 @@
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_libecourseid" TYPE="foreign" FIELDS="libecourseid" REFTABLE="pe_libe_courses" REFFIELDS="id"/>
-        <KEY NAME="foreign_libelessonid" TYPE="foreign" FIELDS="libelessonid" REFTABLE="pe_libe_lessons" REFFIELDS="id"/>
+        <KEY NAME="foreign_libecourseid" TYPE="foreign" FIELDS="libecourseid" REFTABLE="LIBE-personalised-hints_libe_courses" REFFIELDS="id"/>
+        <KEY NAME="foreign_libelessonid" TYPE="foreign" FIELDS="libelessonid" REFTABLE="LIBE-personalised-hints_libe_lessons" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_learning_object_outcomes" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_learning_object_outcomes" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learningobjectid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -192,11 +192,11 @@
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="pe_learning_objects" REFFIELDS="id"/>
-        <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="pe_learning_outcomes" REFFIELDS="id"/>
+        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="LIBE-personalised-hints_learning_objects" REFFIELDS="id"/>
+        <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="LIBE-personalised-hints_learning_outcomes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_attempted_course" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_attempted_course" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -206,11 +206,11 @@
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
-        <KEY NAME="foreign_libecourseid" TYPE="foreign" FIELDS="libecourseid" REFTABLE="pe_libe_courses" REFFIELDS="id"/>
+        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="LIBE-personalised-hints_learner_profile" REFFIELDS="id"/>
+        <KEY NAME="foreign_libecourseid" TYPE="foreign" FIELDS="libecourseid" REFTABLE="LIBE-personalised-hints_libe_courses" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_attempted_learning_object" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_attempted_learning_object" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="learnerprofileid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -220,11 +220,11 @@
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
-        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="pe_learning_objects" REFFIELDS="id"/>
+        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="LIBE-personalised-hints_learner_profile" REFFIELDS="id"/>
+        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="LIBE-personalised-hints_learning_objects" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_libe_questions" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_libe_questions" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="questionid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -235,11 +235,11 @@
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
         <KEY NAME="foreign_questionid" TYPE="foreign" FIELDS="questionid" REFTABLE="question" REFFIELDS="id"/>
-        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="pe_learning_objects" REFFIELDS="id"/>
-        <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="pe_learning_outcomes" REFFIELDS="id"/>
+        <KEY NAME="foreign_learningobjectid" TYPE="foreign" FIELDS="learningobjectid" REFTABLE="LIBE-personalised-hints_learning_objects" REFFIELDS="id"/>
+        <KEY NAME="foreign_learningoutcomeid" TYPE="foreign" FIELDS="learningoutcomeid" REFTABLE="LIBE-personalised-hints_learning_outcomes" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_hints" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_hints" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="libequestionid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -252,10 +252,10 @@
       </FIELDS>
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
-        <KEY NAME="foreign_libequestionid" TYPE="foreign" FIELDS="libequestionid" REFTABLE="pe_libe_questions" REFFIELDS="id"/>
+        <KEY NAME="foreign_libequestionid" TYPE="foreign" FIELDS="libequestionid" REFTABLE="LIBE-personalised-hints_libe_questions" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
-    <TABLE NAME="pe_provided_hints_log" COMMENT="Default comment for the table, please edit me">
+    <TABLE NAME="LIBE-personalised-hints_provided_hints_log" COMMENT="Default comment for the table, please edit me">
       <FIELDS>
         <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
         <FIELD NAME="hintid" TYPE="int" LENGTH="10" NOTNULL="true" DEFAULT="0" SEQUENCE="false"/>
@@ -265,7 +265,7 @@
       <KEYS>
         <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
         <KEY NAME="foreign_hintid" TYPE="foreign" FIELDS="hintid" REFTABLE="pe_hints" REFFIELDS="id"/>
-        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="pe_learner_profile" REFFIELDS="id"/>
+        <KEY NAME="foreign_learnerprofileid" TYPE="foreign" FIELDS="learnerprofileid" REFTABLE="LIBE-personalised-hints_learner_profile" REFFIELDS="id"/>
       </KEYS>
     </TABLE>
   </TABLES>
